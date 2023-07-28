@@ -4,8 +4,10 @@ let computerCount = 0;
 // UI integration of score
 const playerScore = document.getElementById("playerScore");
 const computerScore = document.getElementById("computerScore");
-playerScore.innerHTML = playerCount.toString();
-computerScore.innerHTML = computerCount.toString();
+const scoreBoardPlayer= playerScore.innerHTML = playerCount.toString();
+const scoreBoardComputer = computerScore.innerHTML = computerCount.toString();
+const scoreBoardPlayerText = document.getElementById("playerScore").innerText="Player Score: "+scoreBoardPlayer;
+const scoreBoardComputerText =document.getElementById("computerScore").innerText="Computer Score: "+scoreBoardComputer;
 // Random method for Computer 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -46,7 +48,6 @@ function updateScores(result) {
   } else if (result === "Computer win!") {
     computerCount++;
   }
-
   playerScore.innerHTML = playerCount.toString();
   computerScore.innerHTML = computerCount.toString();
 }
@@ -67,7 +68,6 @@ function resetGame() {
   playerScore.innerHTML = playerCount.toString();
   computerScore.innerHTML = computerCount.toString();
 }
-
 // Rock button function connected to UI 
 const buttonRock = window.document.getElementById("button").addEventListener("click", () => {
   const playerSelection = "Rock";
@@ -76,8 +76,6 @@ const buttonRock = window.document.getElementById("button").addEventListener("cl
   updateScores(result);
   checkGameStatus();
 });
-
-
 // Paper button function connected to UI
 const buttonPaper = window.document.getElementById("button2").addEventListener("click", () => {
   const playerSelection = "Paper";
@@ -87,10 +85,19 @@ const buttonPaper = window.document.getElementById("button2").addEventListener("
   checkGameStatus();
 });
 //Scissors button function connected to UI 
-const buttonScissors = window.document.getElementById("button3").addEventListener("click", () => {
+  const buttonScissors = window.document.getElementById("button3").addEventListener("click", () => {
   const playerSelection = "Scissors";
   const computerSelection = getComputerChoice();
   const result = playRound(playerSelection, computerSelection);
   updateScores(result);
   checkGameStatus();
 });
+// Manipulation for CSS && HTML 
+var buttonSuperMan = document.getElementById("button");
+buttonSuperMan.innerHTML="<img src=RPS_RPS-img/Rock.png>";
+var buttonGoku = document.getElementById("button2");
+buttonGoku.innerHTML ="<img src=RPS_RPS-img/Paper.png>";
+var buttonOnePunchMan = document.getElementById("button3");
+buttonOnePunchMan.innerHTML ="<img src=RPS_RPS-img/Scissors.png>";
+
+
